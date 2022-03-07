@@ -1,0 +1,52 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "VSFoundation",
+        "repositoryURL": "https://github.com/virtualstores/ios-foundation.git",
+        "state": {
+          "branch": "develop",
+          "revision": "7db55c257d3e640d784d7c9a7b33023171d6c088",
+          "version": null
+        }
+      },
+      {
+        "package": "VSPositionKit",
+        "repositoryURL": "https://github.com/virtualstores/ios-position-kit.git",
+        "state": {
+          "branch": "chageVPSFlow",
+          "revision": "b0a796c300f91bfcafd30c1a4efcf66b2c0ae3a2",
+          "version": null
+        }
+      },
+      {
+        "package": "VSTT2",
+        "repositoryURL": "https://github.com/virtualstores/ios-sdk",
+        "state": {
+          "branch": "navigation",
+          "revision": "5f1a8789b6279967c599fa9b60b7f2904f985af6",
+          "version": null
+        }
+      },
+      {
+        "package": "VSSensorFusion",
+        "repositoryURL": "https://github.com/virtualstores/ios-sensor-fusion.git",
+        "state": {
+          "branch": "master",
+          "revision": "dfed1f67eb41e2449228e3d31ffc52dc87d66143",
+          "version": null
+        }
+      },
+      {
+        "package": "SQLite.swift",
+        "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "60a65015f6402b7c34b9a924f755ca0a73afeeaa",
+          "version": "0.13.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

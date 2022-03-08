@@ -6,34 +6,7 @@
         "repositoryURL": "https://github.com/virtualstores/ios-foundation.git",
         "state": {
           "branch": "develop",
-          "revision": "7db55c257d3e640d784d7c9a7b33023171d6c088",
-          "version": null
-        }
-      },
-      {
-        "package": "VSPositionKit",
-        "repositoryURL": "https://github.com/virtualstores/ios-position-kit.git",
-        "state": {
-          "branch": "chageVPSFlow",
-          "revision": "b0a796c300f91bfcafd30c1a4efcf66b2c0ae3a2",
-          "version": null
-        }
-      },
-      {
-        "package": "VSTT2",
-        "repositoryURL": "https://github.com/virtualstores/ios-sdk",
-        "state": {
-          "branch": "navigation",
-          "revision": "5f1a8789b6279967c599fa9b60b7f2904f985af6",
-          "version": null
-        }
-      },
-      {
-        "package": "VSSensorFusion",
-        "repositoryURL": "https://github.com/virtualstores/ios-sensor-fusion.git",
-        "state": {
-          "branch": "master",
-          "revision": "dfed1f67eb41e2449228e3d31ffc52dc87d66143",
+          "revision": "a88edc1ae7a31a04592ccf21302f369ff9296d25",
           "version": null
         }
       },

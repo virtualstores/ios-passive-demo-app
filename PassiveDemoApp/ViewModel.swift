@@ -28,11 +28,12 @@ public class ViewModel {
     private var messageIDs: [String] = []
     
     public init() {
-        tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "", clientId: 1, completion: { [weak self] error in
+        tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1, completion: { [weak self] error in
             if error == nil {
-                guard let activeStores = self?.tt2.activeStores  else { return }
+                guard let activeStores = self?.tt2.activeStores, !activeStores.isEmpty else { return }
             
                 let store = activeStores[0]
+                Logger(verbosity: .info).log(message: "Store name: \(store.name)")
                 self?.currentStore = store
                             
                 self?.tt2.initiateStore(store: store, completion: { error in
@@ -47,14 +48,18 @@ public class ViewModel {
     public func start() {
         startNavigation()
         startVisit()
+        tt2.setBackgroundAccess(isActive: true)
     }
     
     public func getItemByShelfName(name: String) {
         tt2.position.getByShelfName(shelfName: name) { itemPosition in
-            do {
-                try self.tt2.navigation.compassSyncPosition(position: itemPosition)
-            } catch {
-                Logger.init().log(message: "GetItemByShelfName startUpdatingLocation error")
+            self.tt2.navigation.stop()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                do {
+                    try self.tt2.navigation.compassStartNavigation(startPosition: itemPosition.point)
+                } catch {
+                    Logger.init().log(message: "GetItemByShelfName startUpdatingLocation error")
+                }
             }
         }
     }
@@ -68,7 +73,8 @@ public class ViewModel {
         guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return }
 
         do {
-            try self.tt2.navigation.start(startPosition: location.point, startAngel: location.direction)
+            //try self.tt2.navigation.start(startPosition: location.point, startAngle: location.direction)
+            try self.tt2.navigation.compassStartNavigation(startPosition: location.point)
         } catch {
             Logger.init().log(message: "startUpdatingLocation error")
         }
@@ -83,7 +89,7 @@ public class ViewModel {
                                                   deviceModel: device.modelName)
         
         let tags: [String : String] = ["age":"67", "gender":"MALE", "userId": "Testing"]
-        
+
         tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags)
         
         collectHeatmapCancellable = tt2.analytics.startHeatMapCollectingPublisher

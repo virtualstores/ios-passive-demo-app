@@ -20,7 +20,11 @@ class ViewController: UIViewController {
     
     var indicator = UIActivityIndicatorView(style: .whiteLarge)
     
-    var viewModel = ViewModel()
+    var viewModel: ViewModel?
+    
+    func setup(for user: User) {
+        viewModel = ViewModel(with: user)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +44,7 @@ class ViewController: UIViewController {
     }
     
     private func bindPublishers() {
-        messgeCancellable = viewModel.stopLoading
+        messgeCancellable = viewModel?.stopLoading
             .compactMap({ $0 })
             .sink { [weak self] stopLoading in
                 if stopLoading {
@@ -48,7 +52,7 @@ class ViewController: UIViewController {
                 }
             }
         
-        loadingCancellable = viewModel.showMessagePublisher
+        loadingCancellable = viewModel?.showMessagePublisher
             .compactMap({ $0 })
             .sink { [weak self] _ in
                 DispatchQueue.main.async {
@@ -59,28 +63,28 @@ class ViewController: UIViewController {
     
     @IBAction func startButtonAction(_ sender: Any) {
         startButton.isUserInteractionEnabled = false
-        viewModel.start()
+        viewModel?.start()
     }
     
     @IBAction func stopButtonAction(_ sender: Any) {
         startButton.isUserInteractionEnabled = true
-        viewModel.stop()
+        viewModel?.stop()
     }
     
     @IBAction func firstButtonAction(_ sender: Any) {
-        viewModel.getItemByShelfName(name: "1")
+        viewModel?.getItemByShelfName(name: "1")
     }
     
     @IBAction func secondButtonAction(_ sender: Any) {
-        viewModel.getItemByShelfName(name: "2")
+        viewModel?.getItemByShelfName(name: "2")
     }
     
     @IBAction func thirdButtonAction(_ sender: Any) {
-        viewModel.getItemByShelfName(name: "3")
+        viewModel?.getItemByShelfName(name: "3")
     }
     
     func showMessage() {
-        let alert = UIAlertController(title: viewModel.messageTitle, message: viewModel.messageDesc, preferredStyle: .alert)
+        let alert = UIAlertController(title: viewModel?.messageTitle, message: viewModel?.messageDesc, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

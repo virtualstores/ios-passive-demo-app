@@ -9,25 +9,19 @@ import Foundation
 import VSFoundation
 
 public class UserSettingsViewModel {
-    var persistence = Persistence() 
     var userName: String?
-    var age: Int?
+    var age: String?
     var gender: String?
     var height: String?
     
     public init() {}
     
-    func seveUserData() {
-        var object = User()
-        object.name = userName
+    func getUser() -> User {
+        let object = User()
+        object.userId = userName
         object.age = age
         object.gender = gender
 
-        do {
-            try persistence.save(&object)
-        } catch {
-            Logger.init(verbosity: .silent).log(tag: Logger.createTag(fileName: #file, functionName: #function),
-                                                message: "Save User Object SQLite error")
-        }
+        return object
     }
 }

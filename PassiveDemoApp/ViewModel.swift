@@ -26,8 +26,9 @@ public class ViewModel {
     private var analyticsMessgeCancellable: AnyCancellable?
     
     private var messageIDs: [String] = []
+    private var user: User?
     
-    public init() {
+    public init(with user: User) {
         tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1, completion: { [weak self] error in
             if error == nil {
                 guard let activeStores = self?.tt2.activeStores, !activeStores.isEmpty else { return }
@@ -35,6 +36,9 @@ public class ViewModel {
                 let store = activeStores[0]
                 Logger(verbosity: .info).log(message: "Store name: \(store.name)")
                 self?.currentStore = store
+                
+                self?.user = user
+                self?.tt2.user.setUser(user: user)
                             
                 self?.tt2.initiateStore(store: store, completion: { error in
                     self?.stopLoading.send(true)
@@ -88,7 +92,9 @@ public class ViewModel {
                                                   appVersion: "1.0",
                                                   deviceModel: device.modelName)
         
-        let tags: [String : String] = ["age":"67", "gender":"MALE", "userId": "Testing"]
+        guard let user = user, let age = user.age, let gender = user.gender, let userId = user.userId else { fatalError("Missing User data") }
+        
+        let tags: [String : String] = ["age": String(age), "gender": gender, "userId": userId]
 
         tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags)
         
@@ -127,6 +133,6 @@ public class ViewModel {
     func stop() {
         tt2.navigation.stop()
         tt2.analytics.stopVisit()
-        tt2.setBackgroundAccess(isActive: true)
+        tt2.setBackgroundAccess(isActive: false)
     }
 }

@@ -28,7 +28,7 @@ public class ViewModel {
     private var messageIDs: [String] = []
     
     public init() {
-        tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "", clientId: 1, completion: { [weak self] error in
+        tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1, completion: { [weak self] error in
             if error == nil {
                 guard let activeStores = self?.tt2.activeStores  else { return }
             

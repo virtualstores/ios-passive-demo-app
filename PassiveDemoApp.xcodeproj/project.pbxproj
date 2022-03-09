@@ -40,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D25BF6827D6104700D43857 /* ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-sdk"; path = "../ios-sdk"; sourceTree = "<group>"; };
+		4D25BF6A27D666CA00D43857 /* ios-position-kit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-position-kit"; path = "../ios-position-kit"; sourceTree = "<group>"; };
+		4D25BF6B27D74A6800D43857 /* ios-sensor-fusion */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-sensor-fusion"; path = "../ios-sensor-fusion"; sourceTree = "<group>"; };
 		902EA31327CF740D008462B2 /* PassiveDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassiveDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EA31627CF740D008462B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902EA31827CF740D008462B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +96,9 @@
 				902EA31527CF740D008462B2 /* PassiveDemoApp */,
 				902EA32C27CF7410008462B2 /* PassiveDemoAppTests */,
 				902EA33627CF7410008462B2 /* PassiveDemoAppUITests */,
+				4D25BF6B27D74A6800D43857 /* ios-sensor-fusion */,
+				4D25BF6A27D666CA00D43857 /* ios-position-kit */,
+				4D25BF6827D6104700D43857 /* ios-sdk */,
 				902EA31427CF740D008462B2 /* Products */,
 			);
 			sourceTree = "<group>";

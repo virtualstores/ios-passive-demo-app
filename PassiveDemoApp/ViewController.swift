@@ -52,7 +52,7 @@ class ViewController: UIViewController {
             .compactMap({ $0 })
             .sink { [weak self] _ in
                 DispatchQueue.main.async {
-                    self?.showMessgae()
+                    self?.showMessage()
                 }
             }
     }
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         viewModel.getItemByShelfName(name: "3")
     }
     
-    func showMessgae() {
+    func showMessage() {
         let alert = UIAlertController(title: viewModel.messageTitle, message: viewModel.messageDesc, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

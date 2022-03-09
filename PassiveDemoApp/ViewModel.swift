@@ -127,5 +127,6 @@ public class ViewModel {
     func stop() {
         tt2.navigation.stop()
         tt2.analytics.stopVisit()
+        tt2.setBackgroundAccess(isActive: true)
     }
 }

@@ -10,7 +10,7 @@ import VSTT2
 import Combine
 import UIKit
 
-public class ViewModel {
+public final class ViewModel {
     var tt2 = TT2()
     
     public var stopLoading: CurrentValueSubject<Bool?, Never> = .init(nil)
@@ -32,20 +32,20 @@ public class ViewModel {
         tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1, completion: { [weak self] error in
             if error == nil {
                 guard let activeStores = self?.tt2.activeStores, !activeStores.isEmpty else { return }
-            
+                
                 let store = activeStores[0]
                 Logger(verbosity: .info).log(message: "Store name: \(store.name)")
                 self?.currentStore = store
                 
                 self?.user = user
                 self?.tt2.user.setUser(user: user)
-                            
+                
                 self?.tt2.initiateStore(store: store, completion: { error in
                     self?.stopLoading.send(true)
                 })
             }
         })
-    
+        
         bindPublishers()
     }
     
@@ -75,7 +75,7 @@ public class ViewModel {
     
     private func startNavigation() {
         guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return }
-
+        
         do {
             //try self.tt2.navigation.start(startPosition: location.point, startAngle: location.direction)
             try self.tt2.navigation.compassStartNavigation(startPosition: location.point)
@@ -95,7 +95,7 @@ public class ViewModel {
         guard let user = user, let age = user.age, let gender = user.gender, let userId = user.userId else { fatalError("Missing User data") }
         
         let tags: [String : String] = ["age": String(age), "gender": gender, "userId": userId]
-
+        
         tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags)
         
         collectHeatmapCancellable = tt2.analytics.startHeatMapCollectingPublisher

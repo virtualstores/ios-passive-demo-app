@@ -8,7 +8,7 @@
 import Foundation
 import VSFoundation
 
-public class UserSettingsViewModel {
+public final class UserSettingsViewModel {
     var userName: String?
     var age: String?
     var gender: String?

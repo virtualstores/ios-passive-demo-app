@@ -10,7 +10,7 @@ import VSFoundation
 import VSTT2
 import Combine
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     @IBOutlet private weak var stopButton: UIButton!
     @IBOutlet private weak var startButton: UIButton!
     

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class UserSettingsViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate {
+public final class UserSettingsViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate {
     @IBOutlet private weak var userNameTextField: UITextField!
     @IBOutlet private weak var userGenderTextField: UITextField!
     @IBOutlet private weak var userageTextField: UITextField!
@@ -28,13 +28,6 @@ public class UserSettingsViewController: UIViewController, UITextFieldDelegate, 
         openMainView()
     }
     
-    func openMainView() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        newViewController.setup(for: viewModel.getUser())
-        self.present(newViewController, animated: true, completion: nil)
-    }
-    
     @objc func userNameFieldDidChange(_ textField: UITextField) {
         if let text = textField.text {
             viewModel.userName = text
@@ -45,12 +38,6 @@ public class UserSettingsViewController: UIViewController, UITextFieldDelegate, 
         if let text = textField.text {
             viewModel.age = text
         }
-    }
-    
-    func setupGender(_ text: String) {
-        viewModel.gender = text
-        userGenderTextField.text = text
-        userageTextField.resignFirstResponder()
     }
     
     @objc func selectGenderAction(textField: UITextField) {
@@ -68,4 +55,18 @@ public class UserSettingsViewController: UIViewController, UITextFieldDelegate, 
        optionMenu.addAction(genderFemale)
        self.present(optionMenu, animated: true, completion: nil)
    }
+    
+    private func setupGender(_ text: String) {
+        viewModel.gender = text
+        userGenderTextField.text = text
+        userageTextField.resignFirstResponder()
+    }
+    
+    private func openMainView() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        mainVC.setup(for: viewModel.getUser())
+        self.present(mainVC, animated: true, completion: nil)
+    }
+    
 }

@@ -19,6 +19,9 @@ public final class UserSettingsViewController: UIViewController, UITextFieldDele
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        self.userNameTextField.text = viewModel.userName
+        self.userageTextField.text = viewModel.age
+        self.userGenderTextField.text = viewModel.gender
         self.userNameTextField.addTarget(self, action: #selector(userNameFieldDidChange(_:)), for: .editingDidEnd)
         self.userageTextField.addTarget(self, action: #selector(ageFieldDidChange(_:)), for: .editingDidEnd)
         self.userGenderTextField.addTarget(self, action: #selector(selectGenderAction(textField:)), for: .touchDown)
@@ -68,5 +71,4 @@ public final class UserSettingsViewController: UIViewController, UITextFieldDele
         mainVC.setup(for: viewModel.getUser())
         self.present(mainVC, animated: true, completion: nil)
     }
-    
 }

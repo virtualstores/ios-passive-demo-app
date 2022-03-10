@@ -11,7 +11,7 @@ import Combine
 import UIKit
 
 public final class ViewModel {
-    var tt2 = TT2()
+    let tt2 = TT2()
     
     public var stopLoading: CurrentValueSubject<Bool?, Never> = .init(nil)
     public var showMessagePublisher: CurrentValueSubject<Void?, Never> = .init(nil)
@@ -25,20 +25,18 @@ public final class ViewModel {
     private var collectHeatmapCancellable: AnyCancellable?
     private var analyticsMessgeCancellable: AnyCancellable?
     
-    private var messageIDs: [String] = []
+    private var currentEvent: TriggerEvent?
     private var user: User?
     
     public init(with user: User) {
         tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1, completion: { [weak self] error in
             if error == nil {
-                guard let activeStores = self?.tt2.activeStores, !activeStores.isEmpty else { return }
+                guard let store = self?.tt2.activeStores.first else { return }
                 
-                let store = activeStores[0]
-                Logger(verbosity: .info).log(message: "Store name: \(store.name)")
                 self?.currentStore = store
-                
+            
                 self?.user = user
-                self?.tt2.user.setUser(user: user)
+                self?.tt2.userSettings.setUser(user: user)
                 
                 self?.tt2.initiateStore(store: store, completion: { error in
                     self?.stopLoading.send(true)
@@ -73,11 +71,21 @@ public final class ViewModel {
         }
     }
     
+    public func addCompletedTriggerEvent() {
+        guard let currentEvent = self.currentEvent else { return }
+        tt2.analytics.addTriggerEvent(for: currentEvent)
+    }
+    
+    public func createCustomEvent() {
+        let trigger = TriggerEvent.CoordinateTrigger(point: CGPoint(x: 5.0, y: 10.0), radius: 5)
+        let event = TriggerEvent(rtlsOptionsId: "18", name: "Testing", description: "Test description", eventType: TriggerEvent.EventType.coordinateTrigger(trigger))
+        self.tt2.analytics.evenManager.addEvent(event: event)
+    }
+    
     private func startNavigation() {
         guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return }
         
         do {
-            //try self.tt2.navigation.start(startPosition: location.point, startAngle: location.direction)
             try self.tt2.navigation.compassStartNavigation(startPosition: location.point)
         } catch {
             Logger.init().log(message: "startUpdatingLocation error")
@@ -119,14 +127,10 @@ public final class ViewModel {
         analyticsMessgeCancellable = tt2.analytics.evenManager.messageEventPublisher
             .compactMap({ $0 })
             .sink { [weak self] event in
-                let key = event.name + event.description
-                if self?.messageIDs.contains(key) == false {
-                    self?.messageIDs.append(key)
-                    
-                    self?.messageTitle = event.name
-                    self?.messageDesc = event.description
-                    self?.showMessagePublisher.send(())
-                }
+                self?.currentEvent = event
+                self?.messageTitle = event.name
+                self?.messageDesc = event.description
+                self?.showMessagePublisher.send(())
             }
     }
     

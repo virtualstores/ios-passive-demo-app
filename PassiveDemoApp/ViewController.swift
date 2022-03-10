@@ -85,7 +85,11 @@ final class ViewController: UIViewController {
     
     func showMessage() {
         let alert = UIAlertController(title: viewModel?.messageTitle, message: viewModel?.messageDesc, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let cancelAction = UIAlertAction(title: "OK", style: .default) { action in
+            self.viewModel?.addCompletedTriggerEvent()
+        }
+        
+        alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
 }

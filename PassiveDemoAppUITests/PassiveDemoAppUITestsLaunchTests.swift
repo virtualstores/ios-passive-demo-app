@@ -1,13 +1,13 @@
 //
-//  PassivePartDemoUITestsLaunchTests.swift
-//  PassivePartDemoUITests
+//  PassiveDemoAppUITestsLaunchTests.swift
+//  PassiveDemoAppUITests
 //
 //  Created by Hripsime on 2022-03-02.
 //
 
 import XCTest
 
-class PassivePartDemoUITestsLaunchTests: XCTestCase {
+class PassiveDemoAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

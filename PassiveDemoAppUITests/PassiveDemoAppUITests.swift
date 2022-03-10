@@ -1,13 +1,13 @@
 //
-//  PassivePartDemoUITests.swift
-//  PassivePartDemoUITests
+//  PassiveDemoAppUITests.swift
+//  PassiveDemoAppUITests
 //
 //  Created by Hripsime on 2022-03-02.
 //
 
 import XCTest
 
-class PassivePartDemoUITests: XCTestCase {
+class PassiveDemoAppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

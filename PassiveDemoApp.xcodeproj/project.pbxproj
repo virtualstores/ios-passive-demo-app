@@ -13,9 +13,13 @@
 		902EA31E27CF740D008462B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EA31C27CF740D008462B2 /* Main.storyboard */; };
 		902EA32027CF740F008462B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902EA31F27CF740F008462B2 /* Assets.xcassets */; };
 		902EA32327CF740F008462B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EA32127CF740F008462B2 /* LaunchScreen.storyboard */; };
-		902EA32E27CF7410008462B2 /* PassivePartDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA32D27CF7410008462B2 /* PassivePartDemoTests.swift */; };
-		902EA33827CF7410008462B2 /* PassivePartDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA33727CF7410008462B2 /* PassivePartDemoUITests.swift */; };
-		902EA33A27CF7410008462B2 /* PassivePartDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA33927CF7410008462B2 /* PassivePartDemoUITestsLaunchTests.swift */; };
+		902EA32E27CF7410008462B2 /* PassiveDemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA32D27CF7410008462B2 /* PassiveDemoAppTests.swift */; };
+		902EA33827CF7410008462B2 /* PassiveDemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA33727CF7410008462B2 /* PassiveDemoAppUITests.swift */; };
+		902EA33A27CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA33927CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift */; };
+		902EA34827CF746F008462B2 /* VSTT2 in Frameworks */ = {isa = PBXBuildFile; productRef = 902EA34727CF746F008462B2 /* VSTT2 */; };
+		902EA34A27CF7806008462B2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA34927CF7806008462B2 /* ViewModel.swift */; };
+		9095BAEE27D608BC00E661A3 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095BAED27D608BC00E661A3 /* UserSettingsViewController.swift */; };
+		9095BAF127D60B6200E661A3 /* UserSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095BAF027D60B6200E661A3 /* UserSettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		902EA31327CF740D008462B2 /* PassivePartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassivePartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D25BF6827D6104700D43857 /* ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-sdk"; path = "../ios-sdk"; sourceTree = "<group>"; };
+		4D25BF6A27D666CA00D43857 /* ios-position-kit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-position-kit"; path = "../ios-position-kit"; sourceTree = "<group>"; };
+		4D25BF6B27D74A6800D43857 /* ios-sensor-fusion */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-sensor-fusion"; path = "../ios-sensor-fusion"; sourceTree = "<group>"; };
+		902EA31327CF740D008462B2 /* PassiveDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassiveDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EA31627CF740D008462B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902EA31827CF740D008462B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		902EA31A27CF740D008462B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,11 +51,17 @@
 		902EA31F27CF740F008462B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902EA32227CF740F008462B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		902EA32427CF740F008462B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		902EA32927CF740F008462B2 /* PassivePartDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassivePartDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		902EA32D27CF7410008462B2 /* PassivePartDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivePartDemoTests.swift; sourceTree = "<group>"; };
-		902EA33327CF7410008462B2 /* PassivePartDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassivePartDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		902EA33727CF7410008462B2 /* PassivePartDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivePartDemoUITests.swift; sourceTree = "<group>"; };
-		902EA33927CF7410008462B2 /* PassivePartDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivePartDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		902EA32927CF740F008462B2 /* PassiveDemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassiveDemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		902EA32D27CF7410008462B2 /* PassiveDemoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveDemoAppTests.swift; sourceTree = "<group>"; };
+		902EA33327CF7410008462B2 /* PassiveDemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassiveDemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		902EA33727CF7410008462B2 /* PassiveDemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveDemoAppUITests.swift; sourceTree = "<group>"; };
+		902EA33927CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveDemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		902EA34927CF7806008462B2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9095BAEC27D600D200E661A3 /* ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-sdk"; path = "../../ios-sdk"; sourceTree = "<group>"; };
+		9095BAED27D608BC00E661A3 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		9095BAEF27D609A000E661A3 /* ios-foundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-foundation"; path = "../../ios-foundation"; sourceTree = "<group>"; };
+		9095BAF027D60B6200E661A3 /* UserSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewModel.swift; sourceTree = "<group>"; };
+		9095BAF427D610B300E661A3 /* ios-position-kit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-position-kit"; path = "../../ios-position-kit"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				902EA34827CF746F008462B2 /* VSTT2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,9 +93,12 @@
 		902EA30A27CF740D008462B2 = {
 			isa = PBXGroup;
 			children = (
-				902EA31527CF740D008462B2 /* PassivePartDemo */,
-				902EA32C27CF7410008462B2 /* PassivePartDemoTests */,
-				902EA33627CF7410008462B2 /* PassivePartDemoUITests */,
+				902EA31527CF740D008462B2 /* PassiveDemoApp */,
+				902EA32C27CF7410008462B2 /* PassiveDemoAppTests */,
+				902EA33627CF7410008462B2 /* PassiveDemoAppUITests */,
+				4D25BF6B27D74A6800D43857 /* ios-sensor-fusion */,
+				4D25BF6A27D666CA00D43857 /* ios-position-kit */,
+				4D25BF6827D6104700D43857 /* ios-sdk */,
 				902EA31427CF740D008462B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,50 +106,56 @@
 		902EA31427CF740D008462B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				902EA31327CF740D008462B2 /* PassivePartDemo.app */,
-				902EA32927CF740F008462B2 /* PassivePartDemoTests.xctest */,
-				902EA33327CF7410008462B2 /* PassivePartDemoUITests.xctest */,
+				902EA31327CF740D008462B2 /* PassiveDemoApp.app */,
+				902EA32927CF740F008462B2 /* PassiveDemoAppTests.xctest */,
+				902EA33327CF7410008462B2 /* PassiveDemoAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		902EA31527CF740D008462B2 /* PassivePartDemo */ = {
+		902EA31527CF740D008462B2 /* PassiveDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				9095BAF427D610B300E661A3 /* ios-position-kit */,
+				9095BAEF27D609A000E661A3 /* ios-foundation */,
+				9095BAEC27D600D200E661A3 /* ios-sdk */,
 				902EA31627CF740D008462B2 /* AppDelegate.swift */,
 				902EA31827CF740D008462B2 /* SceneDelegate.swift */,
 				902EA31A27CF740D008462B2 /* ViewController.swift */,
+				9095BAED27D608BC00E661A3 /* UserSettingsViewController.swift */,
+				9095BAF027D60B6200E661A3 /* UserSettingsViewModel.swift */,
+				902EA34927CF7806008462B2 /* ViewModel.swift */,
 				902EA31C27CF740D008462B2 /* Main.storyboard */,
 				902EA31F27CF740F008462B2 /* Assets.xcassets */,
 				902EA32127CF740F008462B2 /* LaunchScreen.storyboard */,
 				902EA32427CF740F008462B2 /* Info.plist */,
 			);
-			path = PassivePartDemo;
+			path = PassiveDemoApp;
 			sourceTree = "<group>";
 		};
-		902EA32C27CF7410008462B2 /* PassivePartDemoTests */ = {
+		902EA32C27CF7410008462B2 /* PassiveDemoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				902EA32D27CF7410008462B2 /* PassivePartDemoTests.swift */,
+				902EA32D27CF7410008462B2 /* PassiveDemoAppTests.swift */,
 			);
-			path = PassivePartDemoTests;
+			path = PassiveDemoAppTests;
 			sourceTree = "<group>";
 		};
-		902EA33627CF7410008462B2 /* PassivePartDemoUITests */ = {
+		902EA33627CF7410008462B2 /* PassiveDemoAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				902EA33727CF7410008462B2 /* PassivePartDemoUITests.swift */,
-				902EA33927CF7410008462B2 /* PassivePartDemoUITestsLaunchTests.swift */,
+				902EA33727CF7410008462B2 /* PassiveDemoAppUITests.swift */,
+				902EA33927CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift */,
 			);
-			path = PassivePartDemoUITests;
+			path = PassiveDemoAppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		902EA31227CF740D008462B2 /* PassivePartDemo */ = {
+		902EA31227CF740D008462B2 /* PassiveDemoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 902EA33D27CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassivePartDemo" */;
+			buildConfigurationList = 902EA33D27CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassiveDemoApp" */;
 			buildPhases = (
 				902EA30F27CF740D008462B2 /* Sources */,
 				902EA31027CF740D008462B2 /* Frameworks */,
@@ -142,14 +165,17 @@
 			);
 			dependencies = (
 			);
-			name = PassivePartDemo;
+			name = PassiveDemoApp;
+			packageProductDependencies = (
+				902EA34727CF746F008462B2 /* VSTT2 */,
+			);
 			productName = PassivePartDemo;
-			productReference = 902EA31327CF740D008462B2 /* PassivePartDemo.app */;
+			productReference = 902EA31327CF740D008462B2 /* PassiveDemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		902EA32827CF740F008462B2 /* PassivePartDemoTests */ = {
+		902EA32827CF740F008462B2 /* PassiveDemoAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 902EA34027CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassivePartDemoTests" */;
+			buildConfigurationList = 902EA34027CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassiveDemoAppTests" */;
 			buildPhases = (
 				902EA32527CF740F008462B2 /* Sources */,
 				902EA32627CF740F008462B2 /* Frameworks */,
@@ -160,14 +186,14 @@
 			dependencies = (
 				902EA32B27CF740F008462B2 /* PBXTargetDependency */,
 			);
-			name = PassivePartDemoTests;
+			name = PassiveDemoAppTests;
 			productName = PassivePartDemoTests;
-			productReference = 902EA32927CF740F008462B2 /* PassivePartDemoTests.xctest */;
+			productReference = 902EA32927CF740F008462B2 /* PassiveDemoAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		902EA33227CF7410008462B2 /* PassivePartDemoUITests */ = {
+		902EA33227CF7410008462B2 /* PassiveDemoAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 902EA34327CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassivePartDemoUITests" */;
+			buildConfigurationList = 902EA34327CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassiveDemoAppUITests" */;
 			buildPhases = (
 				902EA32F27CF7410008462B2 /* Sources */,
 				902EA33027CF7410008462B2 /* Frameworks */,
@@ -178,9 +204,9 @@
 			dependencies = (
 				902EA33527CF7410008462B2 /* PBXTargetDependency */,
 			);
-			name = PassivePartDemoUITests;
+			name = PassiveDemoAppUITests;
 			productName = PassivePartDemoUITests;
-			productReference = 902EA33327CF7410008462B2 /* PassivePartDemoUITests.xctest */;
+			productReference = 902EA33327CF7410008462B2 /* PassiveDemoAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +232,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 902EA30E27CF740D008462B2 /* Build configuration list for PBXProject "PassivePartDemo" */;
+			buildConfigurationList = 902EA30E27CF740D008462B2 /* Build configuration list for PBXProject "PassiveDemoApp" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -215,13 +241,16 @@
 				Base,
 			);
 			mainGroup = 902EA30A27CF740D008462B2;
+			packageReferences = (
+				902EA34627CF746F008462B2 /* XCRemoteSwiftPackageReference "ios-sdk" */,
+			);
 			productRefGroup = 902EA31427CF740D008462B2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				902EA31227CF740D008462B2 /* PassivePartDemo */,
-				902EA32827CF740F008462B2 /* PassivePartDemoTests */,
-				902EA33227CF7410008462B2 /* PassivePartDemoUITests */,
+				902EA31227CF740D008462B2 /* PassiveDemoApp */,
+				902EA32827CF740F008462B2 /* PassiveDemoAppTests */,
+				902EA33227CF7410008462B2 /* PassiveDemoAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -259,7 +288,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				902EA31B27CF740D008462B2 /* ViewController.swift in Sources */,
+				9095BAEE27D608BC00E661A3 /* UserSettingsViewController.swift in Sources */,
+				9095BAF127D60B6200E661A3 /* UserSettingsViewModel.swift in Sources */,
 				902EA31727CF740D008462B2 /* AppDelegate.swift in Sources */,
+				902EA34A27CF7806008462B2 /* ViewModel.swift in Sources */,
 				902EA31927CF740D008462B2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902EA32E27CF7410008462B2 /* PassivePartDemoTests.swift in Sources */,
+				902EA32E27CF7410008462B2 /* PassiveDemoAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902EA33A27CF7410008462B2 /* PassivePartDemoUITestsLaunchTests.swift in Sources */,
-				902EA33827CF7410008462B2 /* PassivePartDemoUITests.swift in Sources */,
+				902EA33A27CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift in Sources */,
+				902EA33827CF7410008462B2 /* PassiveDemoAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +318,12 @@
 /* Begin PBXTargetDependency section */
 		902EA32B27CF740F008462B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 902EA31227CF740D008462B2 /* PassivePartDemo */;
+			target = 902EA31227CF740D008462B2 /* PassiveDemoApp */;
 			targetProxy = 902EA32A27CF740F008462B2 /* PBXContainerItemProxy */;
 		};
 		902EA33527CF7410008462B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 902EA31227CF740D008462B2 /* PassivePartDemo */;
+			target = 902EA31227CF740D008462B2 /* PassiveDemoApp */;
 			targetProxy = 902EA33427CF7410008462B2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -367,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -422,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -439,8 +471,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7CW7ARRV9E;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PassivePartDemo/Info.plist;
+				INFOPLIST_FILE = PassiveDemoApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -451,7 +486,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassivePartDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassiveDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -466,8 +501,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7CW7ARRV9E;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PassivePartDemo/Info.plist;
+				INFOPLIST_FILE = PassiveDemoApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -478,7 +516,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassivePartDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassiveDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -501,12 +539,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassivePartDemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassiveDemoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassivePartDemo.app/PassivePartDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassiveDemoApp.app/PassiveDemoApp";
 			};
 			name = Debug;
 		};
@@ -525,12 +563,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassivePartDemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassiveDemoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassivePartDemo.app/PassivePartDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassiveDemoApp.app/PassiveDemoApp";
 			};
 			name = Release;
 		};
@@ -547,12 +585,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassivePartDemoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassiveDemoAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PassivePartDemo;
+				TEST_TARGET_NAME = PassiveDemoApp;
 			};
 			name = Debug;
 		};
@@ -569,19 +607,19 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassivePartDemoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = VirtualStores.PassiveDemoAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PassivePartDemo;
+				TEST_TARGET_NAME = PassiveDemoApp;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		902EA30E27CF740D008462B2 /* Build configuration list for PBXProject "PassivePartDemo" */ = {
+		902EA30E27CF740D008462B2 /* Build configuration list for PBXProject "PassiveDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				902EA33B27CF7410008462B2 /* Debug */,
@@ -590,7 +628,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		902EA33D27CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassivePartDemo" */ = {
+		902EA33D27CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassiveDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				902EA33E27CF7410008462B2 /* Debug */,
@@ -599,7 +637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		902EA34027CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassivePartDemoTests" */ = {
+		902EA34027CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassiveDemoAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				902EA34127CF7410008462B2 /* Debug */,
@@ -608,7 +646,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		902EA34327CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassivePartDemoUITests" */ = {
+		902EA34327CF7410008462B2 /* Build configuration list for PBXNativeTarget "PassiveDemoAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				902EA34427CF7410008462B2 /* Debug */,
@@ -618,6 +656,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		902EA34627CF746F008462B2 /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/virtualstores/ios-sdk";
+			requirement = {
+				branch = navigation;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		902EA34727CF746F008462B2 /* VSTT2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 902EA34627CF746F008462B2 /* XCRemoteSwiftPackageReference "ios-sdk" */;
+			productName = VSTT2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 902EA30B27CF740D008462B2 /* Project object */;
 }

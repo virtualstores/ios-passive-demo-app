@@ -40,9 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D25BF6827D6104700D43857 /* ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-sdk"; path = "../ios-sdk"; sourceTree = "<group>"; };
-		4D25BF6A27D666CA00D43857 /* ios-position-kit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-position-kit"; path = "../ios-position-kit"; sourceTree = "<group>"; };
-		4D25BF6B27D74A6800D43857 /* ios-sensor-fusion */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios-sensor-fusion"; path = "../ios-sensor-fusion"; sourceTree = "<group>"; };
 		902EA31327CF740D008462B2 /* PassiveDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassiveDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EA31627CF740D008462B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902EA31827CF740D008462B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,11 +54,8 @@
 		902EA33727CF7410008462B2 /* PassiveDemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveDemoAppUITests.swift; sourceTree = "<group>"; };
 		902EA33927CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveDemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		902EA34927CF7806008462B2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		9095BAEC27D600D200E661A3 /* ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-sdk"; path = "../../ios-sdk"; sourceTree = "<group>"; };
 		9095BAED27D608BC00E661A3 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
-		9095BAEF27D609A000E661A3 /* ios-foundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-foundation"; path = "../../ios-foundation"; sourceTree = "<group>"; };
 		9095BAF027D60B6200E661A3 /* UserSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewModel.swift; sourceTree = "<group>"; };
-		9095BAF427D610B300E661A3 /* ios-position-kit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-position-kit"; path = "../../ios-position-kit"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +90,6 @@
 				902EA31527CF740D008462B2 /* PassiveDemoApp */,
 				902EA32C27CF7410008462B2 /* PassiveDemoAppTests */,
 				902EA33627CF7410008462B2 /* PassiveDemoAppUITests */,
-				4D25BF6B27D74A6800D43857 /* ios-sensor-fusion */,
-				4D25BF6A27D666CA00D43857 /* ios-position-kit */,
-				4D25BF6827D6104700D43857 /* ios-sdk */,
 				902EA31427CF740D008462B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,9 +107,6 @@
 		902EA31527CF740D008462B2 /* PassiveDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				9095BAF427D610B300E661A3 /* ios-position-kit */,
-				9095BAEF27D609A000E661A3 /* ios-foundation */,
-				9095BAEC27D600D200E661A3 /* ios-sdk */,
 				902EA31627CF740D008462B2 /* AppDelegate.swift */,
 				902EA31827CF740D008462B2 /* SceneDelegate.swift */,
 				902EA31A27CF740D008462B2 /* ViewController.swift */,
@@ -662,7 +650,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/virtualstores/ios-sdk";
 			requirement = {
-				branch = navigation;
+				branch = main;
 				kind = branch;
 			};
 		};

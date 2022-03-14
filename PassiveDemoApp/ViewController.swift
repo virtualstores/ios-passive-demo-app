@@ -72,15 +72,15 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func firstButtonAction(_ sender: Any) {
-        viewModel?.getItemByShelfName(name: "1")
+        viewModel?.getItemBy(shelfName: "1")
     }
     
     @IBAction func secondButtonAction(_ sender: Any) {
-        viewModel?.getItemByShelfName(name: "2")
+        viewModel?.getItemBy(shelfName: "2")
     }
     
     @IBAction func thirdButtonAction(_ sender: Any) {
-        viewModel?.getItemByShelfName(name: "3")
+        viewModel?.getItemBy(shelfName: "3")
     }
     
     func showMessage() {

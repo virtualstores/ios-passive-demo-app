@@ -29,7 +29,7 @@ public final class ViewModel {
     private var user: User?
     
     public init(with user: User) {
-        tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1, completion: { [weak self] error in
+        tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1) { [weak self] error in
             if error == nil {
                 guard let store = self?.tt2.activeStores.first else { return }
                 
@@ -37,12 +37,12 @@ public final class ViewModel {
             
                 self?.user = user
                 self?.tt2.userSettings.setUser(user: user)
-                
-                self?.tt2.initiateStore(store: store, completion: { error in
+
+                self?.tt2.initiateStore(store: store) { error in
                     self?.stopLoading.send(true)
-                })
+                }
             }
-        })
+        }
         
         bindPublishers()
     }
@@ -53,12 +53,12 @@ public final class ViewModel {
         tt2.setBackgroundAccess(isActive: true)
     }
     
-    public func getItemByShelfName(name: String) {
-        tt2.position.getByShelfName(shelfName: name) { itemPosition in
+    public func getItemBy(shelfName: String) {
+        tt2.position.getBy(shelfName: shelfName) { itemPosition in
             self.tt2.navigation.stop()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 do {
-                    try self.tt2.navigation.compassStartNavigation(startPosition: itemPosition.point)
+                    try self.tt2.navigation.start(startPosition: itemPosition.point)
                 } catch {
                     Logger.init().log(message: "GetItemByShelfName startUpdatingLocation error")
                 }
@@ -66,13 +66,17 @@ public final class ViewModel {
         }
     }
     
-    public func getItemByShelfName(barcode: String) {
-        tt2.position.getByBarcode(barcode: barcode) { item in
+    public func getItemBy(barcode: String) {
+        tt2.position.getBy(barcode: barcode) { (barcodePositions) in
+            barcodePositions?.forEach { (position) in
+                Logger(verbosity: .debug).log(message: "\(position.itemPosition), \(position.shelfId), \(position.rtlsOptionsId)")
+            }
         }
     }
     
     public func addCompletedTriggerEvent() {
         guard let currentEvent = self.currentEvent else { return }
+        currentEvent.eventType = .appTrigger(TriggerEvent.AppTrigger(event: currentEvent.name))
         tt2.analytics.addTriggerEvent(for: currentEvent)
     }
     
@@ -86,7 +90,8 @@ public final class ViewModel {
         guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return }
         
         do {
-            try self.tt2.navigation.compassStartNavigation(startPosition: location.point)
+            //try self.tt2.navigation.compassStartNavigation(startPosition: location.point)
+            try self.tt2.navigation.start(startPosition: location.point, startAngle: location.direction)
         } catch {
             Logger.init().log(message: "startUpdatingLocation error")
         }
@@ -103,16 +108,12 @@ public final class ViewModel {
         guard let user = user, let age = user.age, let gender = user.gender, let userId = user.userId else { fatalError("Missing User data") }
         
         let tags: [String : String] = ["age": String(age), "gender": gender, "userId": userId]
-        
-        tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags)
-        
-        collectHeatmapCancellable = tt2.analytics.startHeatMapCollectingPublisher
-            .compactMap({ $0 })
-            .sink(receiveCompletion: { _ in
-                Logger.init().log(message: "startHeatMapCollectingPublisher error")
-            }, receiveValue: { [weak self] event in
-                self?.startCollectingHeatMapData()
-            })
+
+        tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags) { (error) in
+            if error != nil {
+                self.startCollectingHeatMapData()
+            }
+        }
     }
     
     private func startCollectingHeatMapData() {

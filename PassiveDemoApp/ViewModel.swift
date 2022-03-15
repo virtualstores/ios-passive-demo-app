@@ -20,9 +20,6 @@ public final class ViewModel {
     public var messageTitle: String?
     public var messageDesc: String?
     
-    private var storessCancellable: AnyCancellable?
-    private var positionCancellable: AnyCancellable?
-    private var collectHeatmapCancellable: AnyCancellable?
     private var analyticsMessgeCancellable: AnyCancellable?
     
     private var currentEvent: TriggerEvent?

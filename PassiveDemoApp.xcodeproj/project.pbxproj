@@ -460,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7CW7ARRV9E;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PassiveDemoApp/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience";
@@ -490,6 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7CW7ARRV9E;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PassiveDemoApp/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App Uses Location Services to allow background operations while performing long running tasks, this insures data integrity on our side, and offers a better user experience";
@@ -650,8 +652,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/virtualstores/ios-sdk";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

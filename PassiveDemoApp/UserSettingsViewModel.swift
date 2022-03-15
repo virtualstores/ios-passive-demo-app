@@ -17,11 +17,6 @@ public final class UserSettingsViewModel {
     public init() {}
     
     func getUser() -> User {
-        let object = User()
-        object.userId = userName
-        object.age = age
-        object.gender = gender
-
-        return object
+        User(id: nil, userId: userName, userHeight: nil, name: userName, age: age, gender: gender)
     }
 }

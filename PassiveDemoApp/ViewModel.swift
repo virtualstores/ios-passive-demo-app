@@ -29,7 +29,8 @@ public final class ViewModel {
     private var user: User?
     
     public init(with user: User) {
-        tt2.initialize(with: "https://gunnis-hp-central.ih.vs-office.se/api/v1", apiKey: "kanelbulle", clientId: 1) { [weak self] error in
+        let connection = ServerConnection(apiKey: "kanelbulle", serverAddress: "https://gunnis-hp-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
+        tt2.initialize(with: connection.serverAddress!, apiKey: connection.apiKey!, clientId: 1) { [weak self] error in
             if error == nil {
                 guard let store = self?.tt2.activeStores.first else { return }
                 
@@ -69,7 +70,7 @@ public final class ViewModel {
     public func getItemBy(barcode: String) {
         tt2.position.getBy(barcode: barcode) { (barcodePositions) in
             barcodePositions?.forEach { (position) in
-                Logger(verbosity: .debug).log(message: "\(position.itemPosition), \(position.shelfId), \(position.rtlsOptionsId)")
+                Logger(verbosity: .debug).log(message: "\(position.itemPosition!), \(position.shelfId!), \(position.rtlsOptionsId!)")
             }
         }
     }
@@ -110,7 +111,7 @@ public final class ViewModel {
         let tags: [String : String] = ["age": String(age), "gender": gender, "userId": userId]
 
         tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags) { (error) in
-            if error != nil {
+            if error == nil {
                 self.startCollectingHeatMapData()
             }
         }

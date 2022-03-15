@@ -33,7 +33,7 @@ public final class ViewModel {
         tt2.initialize(with: connection.serverAddress!, apiKey: connection.apiKey!, clientId: 1) { [weak self] error in
             if error == nil {
                 guard let store = self?.tt2.activeStores.first else { return }
-                
+
                 self?.currentStore = store
             
                 self?.user = user
@@ -67,10 +67,10 @@ public final class ViewModel {
     }
     
     public func getItemBy(barcode: String) {
-        tt2.position.getBy(barcode: barcode) { (barcodePositions) in
-            barcodePositions?.forEach { (position) in
-                Logger(verbosity: .debug).log(message: "\(position.itemPosition!), \(position.shelfId!), \(position.rtlsOptionsId!)")
-            }
+        tt2.position.getBy(barcode: barcode) { (item) in
+            item?.itemPositions.forEach({ (position) in
+                Logger(verbosity: .debug).log(message: "\(position.point)")
+            })
         }
     }
     

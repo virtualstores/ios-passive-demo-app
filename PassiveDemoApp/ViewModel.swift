@@ -51,7 +51,6 @@ public final class ViewModel {
     public func start() {
         startNavigation()
         startVisit()
-        tt2.setBackgroundAccess(isActive: true)
     }
     
     public func getItemBy(shelfName: String) {

@@ -18,7 +18,7 @@ final class ViewController: UIViewController {
     private var messgeCancellable: AnyCancellable?
     private var loadingCancellable: AnyCancellable?
     
-    var indicator = UIActivityIndicatorView(style: .whiteLarge)
+    var indicator = UIActivityIndicatorView(style: .large)
     
     var viewModel: ViewModel?
     
@@ -63,12 +63,17 @@ final class ViewController: UIViewController {
     
     @IBAction func startButtonAction(_ sender: Any) {
         startButton.isUserInteractionEnabled = false
-        viewModel?.start()
+        if viewModel?.start() ?? false {
+            self.stopButton.backgroundColor = .red
+        } else {
+            startButton.isUserInteractionEnabled = true
+        }
     }
     
     @IBAction func stopButtonAction(_ sender: Any) {
         startButton.isUserInteractionEnabled = true
         viewModel?.stop()
+        stopButton.backgroundColor = .systemGray
     }
     
     @IBAction func firstButtonAction(_ sender: Any) {

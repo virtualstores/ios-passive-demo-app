@@ -21,6 +21,7 @@ public final class ViewModel {
     public var messageDesc: String?
     
     private var analyticsMessgeCancellable: AnyCancellable?
+    private var floorChangeCancellable: AnyCancellable?
     
     private var currentEvent: TriggerEvent?
     private var user: User?
@@ -29,14 +30,15 @@ public final class ViewModel {
         let connection = ServerConnection(apiKey: "kanelbulle", serverAddress: "https://gunnis-hp-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
         tt2.initialize(with: connection.serverAddress!, apiKey: connection.apiKey!, clientId: 1) { [weak self] error in
             if error == nil {
-                guard let store = self?.tt2.activeStores.first else { return }
+                guard let store = self?.tt2.activeStores.first(where: { $0.id == 52 }) else { return }
 
                 self?.currentStore = store
-            
+                Logger(verbosity: .info).log(message: "StoreName: \(store.name)")
                 self?.user = user
                 self?.tt2.userSettings.setUser(user: user)
 
                 self?.tt2.initiateStore(store: store) { error in
+                    Logger(verbosity: .info).log(message: "Active floor: \(self?.tt2.rtlsOption?.name)")
                     self?.stopLoading.send(true)
                 }
             }
@@ -45,9 +47,12 @@ public final class ViewModel {
         bindPublishers()
     }
     
-    public func start() {
-        startNavigation()
-        startVisit()
+    public func start() -> Bool {
+        if startNavigation() {
+            startVisit()
+            return true
+        }
+        return false
     }
     
     public func getItemBy(shelfName: String) {
@@ -72,8 +77,7 @@ public final class ViewModel {
     }
     
     public func addCompletedTriggerEvent() {
-        guard let currentEvent = self.currentEvent else { return }
-        currentEvent.eventType = .appTrigger(TriggerEvent.AppTrigger(event: currentEvent.name))
+        guard let currentEvent = self.currentEvent?.toMessageShown else { return }
         tt2.analytics.addTriggerEvent(for: currentEvent)
     }
     
@@ -83,15 +87,18 @@ public final class ViewModel {
         self.tt2.analytics.evenManager.addEvent(event: event)
     }
     
-    private func startNavigation() {
-        guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return }
+    private func startNavigation() -> Bool {
+        guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return false }
         
         do {
             //try self.tt2.navigation.compassStartNavigation(startPosition: location.point)
+            Logger(verbosity: .info).log(message: "StartPoint: \(location.point), \(location.direction)")
             try self.tt2.navigation.start(startPosition: location.point, startAngle: location.direction)
+            return true
         } catch {
             Logger.init().log(message: "startUpdatingLocation error")
         }
+        return false
     }
     
     private func startVisit() {
@@ -130,11 +137,18 @@ public final class ViewModel {
                 self?.messageDesc = event.description
                 self?.showMessagePublisher.send(())
             }
+
+      floorChangeCancellable = tt2.floorChangePublisher
+        .compactMap { $0 }
+        .sink(receiveValue: { floorName in
+            self.messageTitle = "Changed floor to: \(floorName)"
+            self.messageDesc = nil
+            self.showMessagePublisher.send(())
+        })
     }
     
     func stop() {
         tt2.navigation.stop()
         tt2.analytics.stopVisit()
-        tt2.setBackgroundAccess(isActive: false)
     }
 }

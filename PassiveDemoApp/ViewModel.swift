@@ -30,7 +30,7 @@ public final class ViewModel {
         let connection = ServerConnection(apiKey: "kanelbulle", serverAddress: "https://gunnis-hp-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
         tt2.initialize(with: connection.serverAddress!, apiKey: connection.apiKey!, clientId: 1) { [weak self] error in
             if error == nil {
-                guard let store = self?.tt2.activeStores.first(where: { $0.id == 52 }) else { return }
+                guard let store = self?.tt2.activeStores.first(where: { $0.id == 18 }) else { return }
 
                 self?.currentStore = store
                 Logger(verbosity: .info).log(message: "StoreName: \(store.name)")

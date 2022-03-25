@@ -27,6 +27,7 @@ public final class ViewModel {
     private var user: User?
     
     public init(with user: User) {
+        let coopConnection = ServerConnection(apiKey: "49fd933f-ebc3-45c8-b83c-4ae32bb2b908", serverAddress: "https://coop-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
         let connection = ServerConnection(apiKey: "kanelbulle", serverAddress: "https://gunnis-hp-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
         tt2.initialize(with: connection.serverAddress!, apiKey: connection.apiKey!, clientId: 1) { [weak self] error in
             if error == nil {
@@ -68,11 +69,20 @@ public final class ViewModel {
         }
     }
     
-    public func getItemBy(barcode: String) {
+    public func getItemBy(barcode: String, completion: @escaping (Error?) -> Void) {
         tt2.position.getBy(barcode: barcode) { (item) in
-            item?.itemPositions.forEach({ (position) in
-                Logger(verbosity: .debug).log(message: "\(position.point)")
-            })
+            if let itemPosition = item?.itemPosition {
+                do {
+                    if !self.tt2.navigation.isActive {
+                        self.startVisit()
+                        completion(nil)
+                    }
+                    try self.tt2.navigation.syncPosition(position: itemPosition)
+                } catch {
+                    print("StartingError: \(error.localizedDescription)")
+                    completion(error)
+                }
+            }
         }
     }
     
@@ -82,8 +92,9 @@ public final class ViewModel {
     }
     
     public func createCustomEvent() {
+        guard let id = tt2.rtlsOption?.id else { return }
         let trigger = TriggerEvent.CoordinateTrigger(point: CGPoint(x: 5.0, y: 10.0), radius: 5)
-        let event = TriggerEvent(rtlsOptionsId: "18", name: "Testing", description: "Test description", eventType: TriggerEvent.EventType.coordinateTrigger(trigger))
+        let event = TriggerEvent(rtlsOptionsId: id, name: "Testing", description: "Test description", eventType: TriggerEvent.EventType.coordinateTrigger(trigger))
         self.tt2.analytics.evenManager.addEvent(event: event)
     }
     
@@ -91,9 +102,9 @@ public final class ViewModel {
         guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return false }
         
         do {
-            //try self.tt2.navigation.compassStartNavigation(startPosition: location.point)
+            try self.tt2.navigation.start(startPosition: location.point)
             Logger(verbosity: .info).log(message: "StartPoint: \(location.point), \(location.direction)")
-            try self.tt2.navigation.start(startPosition: location.point, startAngle: location.direction)
+//            try self.tt2.navigation.start(startPosition: location.point, startAngle: location.direction)
             return true
         } catch {
             Logger.init().log(message: "startUpdatingLocation error")

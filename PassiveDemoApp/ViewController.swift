@@ -61,31 +61,67 @@ final class ViewController: UIViewController {
             }
     }
     
-    @IBAction func startButtonAction(_ sender: Any) {
+    @IBAction func startButtonAction(_ sender: UIButton) {
         startButton.isUserInteractionEnabled = false
-        if viewModel?.start() ?? false {
-            self.stopButton.backgroundColor = .red
-        } else {
-            startButton.isUserInteractionEnabled = true
-        }
+        viewModel?.getItemBy(barcode: "7350109620030", completion: { (error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    self.startButton.isUserInteractionEnabled = false
+                    self.stopButton.backgroundColor = .red
+                } else {
+                    self.startButton.isUserInteractionEnabled = true
+                }
+            }
+        })
     }
     
-    @IBAction func stopButtonAction(_ sender: Any) {
+    @IBAction func stopButtonAction(_ sender: UIButton) {
         startButton.isUserInteractionEnabled = true
         viewModel?.stop()
         stopButton.backgroundColor = .systemGray
     }
     
-    @IBAction func firstButtonAction(_ sender: Any) {
-        viewModel?.getItemBy(shelfName: "1")
+    @IBAction func firstButtonAction(_ sender: UIButton) {
+//        viewModel?.getItemBy(shelfName: "1")
+        handleSyncButtonPressed(tag: sender.tag)
     }
     
-    @IBAction func secondButtonAction(_ sender: Any) {
-        viewModel?.getItemBy(shelfName: "2")
+    @IBAction func secondButtonAction(_ sender: UIButton) {
+//        viewModel?.getItemBy(shelfName: "2")
+        handleSyncButtonPressed(tag: sender.tag)
     }
     
-    @IBAction func thirdButtonAction(_ sender: Any) {
-        viewModel?.getItemBy(shelfName: "3")
+    @IBAction func thirdButtonAction(_ sender: UIButton) {
+//        viewModel?.getItemBy(shelfName: "3")
+        handleSyncButtonPressed(tag: sender.tag)
+    }
+
+    func handleSyncButtonPressed(tag: Int) {
+        let barcode: String
+        switch tag {
+        case 1: barcode = "7340011407003"
+        case 2: barcode = "7312082001015"
+        case 3: barcode = "7340191105256"
+        case 4: barcode = "7350002402658"
+        case 5: barcode = "7310865866356"
+        case 6: barcode = "7394376614323"
+        case 7: barcode = "7340011305071"
+        case 8: barcode = "7350027795339"
+        case 9: barcode = "7340011443056"
+        case 10: barcode = "7340005403554"
+        default: barcode = ""
+        }
+
+        viewModel?.getItemBy(barcode: barcode, completion: { (error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    self.startButton.isUserInteractionEnabled = false
+                    self.stopButton.backgroundColor = .red
+                } else {
+                    self.startButton.isUserInteractionEnabled = true
+                }
+            }
+        })
     }
     
     func showMessage() {

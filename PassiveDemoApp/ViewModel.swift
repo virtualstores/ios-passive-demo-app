@@ -27,7 +27,6 @@ public final class ViewModel {
     private var user: User?
     
     public init(with user: User) {
-        let coopConnection = ServerConnection(apiKey: "49fd933f-ebc3-45c8-b83c-4ae32bb2b908", serverAddress: "https://coop-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
         let connection = ServerConnection(apiKey: "kanelbulle", serverAddress: "https://gunnis-hp-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
         tt2.initialize(with: connection.serverAddress!, apiKey: connection.apiKey!, clientId: 1) { [weak self] error in
             if error == nil {

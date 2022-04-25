@@ -44,7 +44,7 @@ final class ViewController: UIViewController {
     }
     
     private func bindPublishers() {
-        messgeCancellable = viewModel?.stopLoading
+        loadingCancellable = viewModel?.stopLoading
             .compactMap({ $0 })
             .sink { [weak self] stopLoading in
                 if stopLoading {
@@ -52,7 +52,7 @@ final class ViewController: UIViewController {
                 }
             }
         
-        loadingCancellable = viewModel?.showMessagePublisher
+        messgeCancellable = viewModel?.showMessagePublisher
             .compactMap({ $0 })
             .sink { [weak self] _ in
                 DispatchQueue.main.async {

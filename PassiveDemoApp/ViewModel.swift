@@ -88,12 +88,13 @@ public final class ViewModel {
     public func addCompletedTriggerEvent() {
         guard let currentEvent = self.currentEvent?.toMessageShown else { return }
         tt2.analytics.addTriggerEvent(for: currentEvent)
+        self.currentEvent = nil
     }
     
     public func createCustomEvent() {
         guard let id = tt2.rtlsOption?.id else { return }
         let trigger = TriggerEvent.CoordinateTrigger(point: CGPoint(x: 5.0, y: 10.0), radius: 5)
-        let event = TriggerEvent(rtlsOptionsId: id, name: "Testing", description: "Test description", eventType: TriggerEvent.EventType.coordinateTrigger(trigger))
+        let event = TriggerEvent(rtlsOptionsId: id, name: "Testing", description: "Test description", eventType: .coordinateTrigger(trigger))
         self.tt2.analytics.evenManager.addEvent(event: event)
     }
     

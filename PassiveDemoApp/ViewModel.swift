@@ -38,7 +38,7 @@ public final class ViewModel {
                 self?.tt2.userSettings.setUser(user: user)
 
                 self?.tt2.initiateStore(store: store) { error in
-                    Logger(verbosity: .info).log(message: "Active floor: \(self?.tt2.rtlsOption?.name)")
+                    Logger(verbosity: .info).log(message: "Active floor: \(self?.tt2.activeFloor?.name)")
                     self?.stopLoading.send(true)
                 }
             }
@@ -57,10 +57,11 @@ public final class ViewModel {
     
     public func getItemBy(shelfName: String) {
         tt2.position.getBy(shelfName: shelfName) { itemPosition in
+            guard let point = itemPosition?.point else { return }
             self.tt2.navigation.stop()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 do {
-                    try self.tt2.navigation.start(startPosition: itemPosition.point)
+                    try self.tt2.navigation.start(startPosition: point)
                 } catch {
                     Logger.init().log(message: "GetItemByShelfName startUpdatingLocation error")
                 }
@@ -92,14 +93,14 @@ public final class ViewModel {
     }
     
     public func createCustomEvent() {
-        guard let id = tt2.rtlsOption?.id else { return }
-        let trigger = TriggerEvent.CoordinateTrigger(point: CGPoint(x: 5.0, y: 10.0), radius: 5)
+        guard let id = tt2.activeFloor?.id else { return }
+        let trigger = TriggerEvent.CoordinateTrigger(point: CGPoint(x: 5.0, y: 10.0), radius: 5, type: .enter)
         let event = TriggerEvent(rtlsOptionsId: id, name: "Testing", description: "Test description", eventType: .coordinateTrigger(trigger))
-        self.tt2.analytics.evenManager.addEvent(event: event)
+        self.tt2.events.add(event: event)
     }
     
     private func startNavigation() -> Bool {
-        guard let location = tt2.rtlsOption?.scanLocations?.first(where: { $0.type == .start }) else { return false }
+        guard let location = tt2.activeFloor?.scanLocations?.first(where: { $0.type == .start }) else { return false }
         
         do {
             try self.tt2.navigation.start(startPosition: location.point)
@@ -140,13 +141,24 @@ public final class ViewModel {
     }
     
     private func bindPublishers() {
-        analyticsMessgeCancellable = tt2.analytics.evenManager.messageEventPublisher
+        analyticsMessgeCancellable = tt2.events.messageEventPublisher
             .compactMap({ $0 })
             .sink { [weak self] event in
                 self?.currentEvent = event
                 self?.messageTitle = event.name
                 self?.messageDesc = event.description
                 self?.showMessagePublisher.send(())
+
+                // Use the keys found in struct DefaultMetaData to get information about the event when presenting
+                let title = event.metaData["@title"]
+                let description = event.metaData["@body"]
+                let imageUrl = event.metaData["@imageUrl"]
+                let type = event.metaData["@type"] // If the popup should be small or large
+                // Present event
+
+                // IMPORTANT: Don't forget to report to the analytics that this message was shown so that it gets tracked in the CMS
+                guard let messageShownEvent = event.toMessageShown else { return }
+                self?.tt2.analytics.addTriggerEvent(for: messageShownEvent)
             }
 
       floorChangeCancellable = tt2.floorChangePublisher

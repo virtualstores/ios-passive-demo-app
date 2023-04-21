@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DDDAD31298428D600F2F7DB /* VSTT2 in Frameworks */ = {isa = PBXBuildFile; productRef = 4DDDAD30298428D600F2F7DB /* VSTT2 */; };
 		902EA31727CF740D008462B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA31627CF740D008462B2 /* AppDelegate.swift */; };
 		902EA31927CF740D008462B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA31827CF740D008462B2 /* SceneDelegate.swift */; };
 		902EA31B27CF740D008462B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA31A27CF740D008462B2 /* ViewController.swift */; };
@@ -16,7 +17,6 @@
 		902EA32E27CF7410008462B2 /* PassiveDemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA32D27CF7410008462B2 /* PassiveDemoAppTests.swift */; };
 		902EA33827CF7410008462B2 /* PassiveDemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA33727CF7410008462B2 /* PassiveDemoAppUITests.swift */; };
 		902EA33A27CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA33927CF7410008462B2 /* PassiveDemoAppUITestsLaunchTests.swift */; };
-		902EA34827CF746F008462B2 /* VSTT2 in Frameworks */ = {isa = PBXBuildFile; productRef = 902EA34727CF746F008462B2 /* VSTT2 */; };
 		902EA34A27CF7806008462B2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EA34927CF7806008462B2 /* ViewModel.swift */; };
 		9095BAEE27D608BC00E661A3 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095BAED27D608BC00E661A3 /* UserSettingsViewController.swift */; };
 		9095BAF127D60B6200E661A3 /* UserSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095BAF027D60B6200E661A3 /* UserSettingsViewModel.swift */; };
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902EA34827CF746F008462B2 /* VSTT2 in Frameworks */,
+				4DDDAD31298428D600F2F7DB /* VSTT2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +84,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DDDAD2F298428D600F2F7DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		902EA30A27CF740D008462B2 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +98,7 @@
 				902EA32C27CF7410008462B2 /* PassiveDemoAppTests */,
 				902EA33627CF7410008462B2 /* PassiveDemoAppUITests */,
 				902EA31427CF740D008462B2 /* Products */,
+				4DDDAD2F298428D600F2F7DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,7 +163,7 @@
 			);
 			name = PassiveDemoApp;
 			packageProductDependencies = (
-				902EA34727CF746F008462B2 /* VSTT2 */,
+				4DDDAD30298428D600F2F7DB /* VSTT2 */,
 			);
 			productName = PassivePartDemo;
 			productReference = 902EA31327CF740D008462B2 /* PassiveDemoApp.app */;
@@ -230,7 +238,7 @@
 			);
 			mainGroup = 902EA30A27CF740D008462B2;
 			packageReferences = (
-				902EA34627CF746F008462B2 /* XCRemoteSwiftPackageReference "ios-sdk" */,
+				4D8BF2562984254600204D8F /* XCRemoteSwiftPackageReference "ios-sdk" */,
 			);
 			productRefGroup = 902EA31427CF740D008462B2 /* Products */;
 			projectDirPath = "";
@@ -656,7 +664,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		902EA34627CF746F008462B2 /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
+		4D8BF2562984254600204D8F /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/virtualstores/ios-sdk";
 			requirement = {
@@ -667,9 +675,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		902EA34727CF746F008462B2 /* VSTT2 */ = {
+		4DDDAD30298428D600F2F7DB /* VSTT2 */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 902EA34627CF746F008462B2 /* XCRemoteSwiftPackageReference "ios-sdk" */;
+			package = 4D8BF2562984254600204D8F /* XCRemoteSwiftPackageReference "ios-sdk" */;
 			productName = VSTT2;
 		};
 /* End XCSwiftPackageProductDependency section */

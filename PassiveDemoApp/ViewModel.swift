@@ -11,7 +11,7 @@ import Combine
 import UIKit
 
 public final class ViewModel {
-    let tt2 = TT2()
+    let tt2 = TT2(with: "https://gunnis-hp-central.ih.vs-office.se", apiKey: "kanelbulle")
     
     public var stopLoading: CurrentValueSubject<Bool?, Never> = .init(nil)
     public var showMessagePublisher: CurrentValueSubject<Void?, Never> = .init(nil)
@@ -27,17 +27,18 @@ public final class ViewModel {
     private var user: User?
     
     public init(with user: User) {
-        let connection = ServerConnection(apiKey: "kanelbulle", serverAddress: "https://gunnis-hp-central.ih.vs-office.se", mqttAddress: nil, storeId: 0)
-        tt2.initialize(with: connection.serverAddress!, apiKey: connection.apiKey!, clientId: 1) { [weak self] error in
+        tt2.initialize(clientId: 1) { [weak self] error in
             if error == nil {
                 guard let store = self?.tt2.activeStores.first(where: { $0.id == 18 }) else { return }
 
                 self?.currentStore = store
                 Logger(verbosity: .info).log(message: "StoreName: \(store.name)")
                 self?.user = user
-                self?.tt2.userSettings.setUser(user: user)
+                self?.tt2.user.initializeUser(userId: user.id ?? "", completion: { (_) in
 
-                self?.tt2.initiateStore(store: store) { error in
+                })
+
+                self?.tt2.initiate(store: store) { error in
                     Logger(verbosity: .info).log(message: "Active floor: \(self?.tt2.activeFloor?.name)")
                     self?.stopLoading.send(true)
                 }
@@ -82,6 +83,8 @@ public final class ViewModel {
                     print("StartingError: \(error.localizedDescription)")
                     completion(error)
                 }
+            } else {
+                completion(NSError())
             }
         }
     }
@@ -125,9 +128,13 @@ public final class ViewModel {
         
         let tags: [String : String] = ["age": String(age), "gender": gender, "userId": userId]
 
-        tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags) { (error) in
-            if error == nil {
+        tt2.analytics.startVisit(deviceInformation: deviceInformation, tags: tags) { (result) in
+            switch result {
+            case .success(let visitId):
+                print("VisitID", visitId)
                 self.startCollectingHeatMapData()
+            case .failure(let error):
+                print("StartVisitError", error)
             }
         }
     }
